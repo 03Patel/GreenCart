@@ -3,11 +3,12 @@ const app = express();
 
 const mongoose = require('mongoose');
 
-const MongoURL = 'mongodb+srv://bit21cs51:kLME8vjociLY8RqU@MagicPin-db.20qkmtg.mongodb.net/MagicPin-db?retryWrites=true&w=majority&appName=MagicPin-db';
+const MongoURL = 'mongodb+srv://bit21cs51_db_user:ch6gzzDo6vnVxPL5@cluster0.urr8lrr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
+//ch6gzzDo6vnVxPL5
 const db = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/GreenCart", {
+    await mongoose.connect(MongoURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
