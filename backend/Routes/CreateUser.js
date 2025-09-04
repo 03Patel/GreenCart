@@ -64,9 +64,7 @@ router.post("/signup", [
             // pretend we saved user
             const user = { id: Date.now(), name, email };
 
-            return res
-                .status(201)
-                .json({ success: true, message: "User registered successfully", user });
+            return res.status(201).json({ success: true, message: "User registered successfully", user });
 
         } catch (err) {
             console.error("Signup error:", err.message);
