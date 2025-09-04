@@ -10,8 +10,9 @@ db();
 
 app.use(express.json());
 app.use(cors({
-    origin: [process.env.CLIENT_URL,'http://localhost:5173'],
-    credentials: true
+  origin: "https://ganesh-uwti.onrender.com", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 app.get('/', (req, res) => {
