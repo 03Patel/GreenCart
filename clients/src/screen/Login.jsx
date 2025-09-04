@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon, UserIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../components/AuthContext";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 function Login() {
   let navigate = useNavigate();
  const { log } = useContext(AuthContext);
@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://backendcart.onrender.com/", {
+      const response = await fetch(`${apiUrl}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

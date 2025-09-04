@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon, UserIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function SignUp() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://backendcart.onrender.com/", {
+      const response = await fetch(`${apiUrl}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials)
