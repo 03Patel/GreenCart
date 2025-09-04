@@ -18,7 +18,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://backendcart.onrender.com", {
+      const response = await fetch("https://backendcart.onrender.com/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials)
