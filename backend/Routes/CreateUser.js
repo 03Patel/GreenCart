@@ -7,32 +7,32 @@ const bcrypt = require('bcryptjs');
 const jwtSecret = "mynameisganeshjipatelbuildingGreenCart"
 
 router.post("/login", [
-    body("password","Incorrect Password").isLength({ min: 6 }),
+    body("password", "Incorrect Password").isLength({ min: 6 }),
     body("email").isEmail()]
-    , async (req , res)=>{
+    , async (req, res) => {
         const error = validationResult(req);
-        if(!error.isEmpty()){
-            return res.status(400).json({error:error.array()})
+        if (!error.isEmpty()) {
+            return res.status(400).json({ error: error.array() })
         }
-    let email = req.body.email;
+        let email = req.body.email;
 
-    try {
-      let userEmail= await  User.findOne({email});
-        if(!userEmail){
-             return res.status(400).json({error:error.array()})
-        }
-        if(!req.body.password === userEmail.password){
-              return res.status(400).json({error:error.array()})
-        }
-        return res.status(400).json({success:true})
+        try {
+            let userEmail = await User.findOne({ email });
+            if (!userEmail) {
+                return res.status(400).json({ error: error.array() })
+            }
+            if (!req.body.password === userEmail.password) {
+                return res.status(400).json({ error: error.array() })
+            }
+            return res.status(400).json({ success: true })
 
-        
-    }catch (error){
-             console.log(error)
-             res.json({success:false})
-    
-    }
-})
+
+        } catch (error) {
+            console.log(error)
+            res.json({ success: false })
+
+        }
+    })
 
 
 
@@ -40,26 +40,39 @@ router.post("/signup", [
     body("name").isLength({ min: 5 }),
     body("password").isLength({ min: 6 }),
     body("email").isEmail()]
-    , async (req , res)=>{
+    , async (req, res) => {
         const error = validationResult(req);
-        if(!error.isEmpty()){
-            return res.status(400).json({error:error.array()})
+        if (!error.isEmpty()) {
+            return res.status(400).json({ error: error.array() })
         }
         const salt = await bcrypt.genSalt(10);
-        let secPassword = await bcrypt.hash(req.body.password,salt);
-        try{
+        let secPassword = await bcrypt.hash(req.body.password, salt);
+        try {
             await User.create({
-                name:req.body.name,
-                password:secPassword,
-                email:req.body.email,
-                location:req.body.location
+                name: req.body.name,
+                password: secPassword,
+                email: req.body.email,
+                location: req.body.location
             })
-            res.json({success:true})
-        }catch(error){
-            console.log(error)
-            res.json({success:false})
+            const { name, email, password } = req.body;
+
+            // 🟢 Example signup logic (replace with your DB logic)
+            if (!name || !email || !password) {
+                return res.status(400).json({ success: false, message: "All fields are required" });
+            }
+
+            // pretend we saved user
+            const user = { id: Date.now(), name, email };
+
+            return res
+                .status(201)
+                .json({ success: true, message: "User registered successfully", user });
+
+        } catch (err) {
+            console.error("Signup error:", err.message);
+            return res.status(500).json({ success: false, message: "Server error" });
         }
-    } 
+    }
 
 
 

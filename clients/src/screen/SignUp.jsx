@@ -23,6 +23,10 @@ function SignUp() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials)
       });
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || "Signup failed");
+      }
 
       const json = await response.json();
       console.log(json);
