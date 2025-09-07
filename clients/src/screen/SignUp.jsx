@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon, UserIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_API_URL_LOCAL
+    : import.meta.env.VITE_API_URL_PROD;
+
 
 function SignUp() {
   const navigate = useNavigate();
