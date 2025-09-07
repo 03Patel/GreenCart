@@ -19,27 +19,7 @@ app.get('/', (req, res) => {
     res.send('Ganesh JI Patel');
 });
 
-app.use('/api', require('./Routes/CreateUser', async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
-
-        if (!name || !email || !password) {
-            return res
-                .status(400)
-                .json({ success: false, message: "All fields are required" });
-        }
-        const user = { id: Date.now(), name, email };
-
-        return res
-            .status(201)
-            .json({ success: true, message: "User registered successfully", user });
-    } catch (err) {
-        console.error("❌ Signup error:", err.message);
-        return res
-            .status(500)
-            .json({ success: false, message: "Server error", error: err.message });
-    }
-}))
+app.use('/api', require('./Routes/CreateUser'))
 // app.use("/api/simulation", simulationRouter);
 // app.use('/api', require('./Routes/simulation'));
 // app.use('/api', require('./Routes/OrderData'));

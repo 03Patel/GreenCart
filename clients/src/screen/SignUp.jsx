@@ -25,10 +25,10 @@ function SignUp() {
       });
 
 
-      const json = await response.json();
-      console.log(json);
+      const data= await response.json();
+      console.log(data);
 
-      if (json.success) {
+      if (data.success) {
         alert("User created successfully");
         navigate("/login");
       } else {
