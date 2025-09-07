@@ -9,11 +9,8 @@ db();
 
 
 app.use(express.json());
-app.use(cors({
-    origin: "https://ganehsk.onrender.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
+app.use(cors({ origin: "https://ganehsk.onrender.com" }));
+
 
 app.get('/', (req, res) => {
     res.send('Ganesh JI Patel');
