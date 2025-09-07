@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', require('./Routes/CreateUser'))
+app.get("/api", (req, res) => res.json({ message: "API is working 🚀" }));
+
 // app.use("/api/simulation", simulationRouter);
 // app.use('/api', require('./Routes/simulation'));
 // app.use('/api', require('./Routes/OrderData'));
