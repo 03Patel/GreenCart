@@ -3,10 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon, UserIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../components/AuthContext";
 
-const apiUrl =
-  import.meta.env.MODE === "development"
-    ? import.meta.env.VITE_API_URL_LOCAL
-    : import.meta.env.VITE_API_URL_PROD;
+const apiUrl ="https://greenbackend-u63l.onrender.com";
 
 
 
