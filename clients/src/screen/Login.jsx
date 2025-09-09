@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon, UserIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../components/AuthContext";
 
-const apiUrl ="https://greenbackend-u63l.onrender.com";
+//const apiUrl ="https://greenbackend-u63l.onrender.com";
 
 
 
@@ -21,7 +21,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${apiUrl}/api/login`, {
+      const response = await fetch("https://greenbackend-u63l.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
