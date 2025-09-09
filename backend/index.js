@@ -9,7 +9,12 @@ db();
 
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://cartfrontends.onrender.com",  // frontend URL
+  })
+);
+
 
 
 app.get('/', (req, res) => {
