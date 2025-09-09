@@ -42,9 +42,9 @@ function NavBar() {
             </div>
           ) : (
             <div className="flex space-x-3">
-              <Link className="bg-white text-green-600 px-4 py-2 rounded hover:bg-gray-100" to="/simulation" >
+{/*               <Link className="bg-white text-green-600 px-4 py-2 rounded hover:bg-gray-100" to="/simulation" >
                 Simulation
-              </Link>
+              </Link> */}
               <button
                 onClick={handleLogoutClick}
                 className="bg-white text-red-600 px-4 py-2 rounded hover:bg-gray-100"
