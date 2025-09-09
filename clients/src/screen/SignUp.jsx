@@ -19,7 +19,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${apiUrl}/api/signup`, {
+      const response = await fetch("https://greenbackend-u63l.onrender.com/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials)
