@@ -9,7 +9,7 @@ db();
 
 
 app.use(express.json());
-app.use(cors({ origin: "https://greenbackend-u63l.onrender.com" }));
+app.use(cors());
 
 
 app.get('/', (req, res) => {
